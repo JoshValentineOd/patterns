@@ -2,6 +2,7 @@ export interface IProductA {
     name: String;
     quality: String;
     cost: String;
+    doSomething():void;
 };
 
 export interface IProductB {

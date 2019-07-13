@@ -1,48 +1,13 @@
-import { IProductA, IProductB, IAbstractFactory } from './interfaces';
+import { ConcreteFactory1, ConcreteFactory2 } from "./concreteFactories";
+import Client from './client'
 
-let concreteProductA2: IProductA = {
-    name: 'concreteProductA2',
-    quality: 'bad',
-    cost: '9.99$'
-};
+const concreteFactory1 = new ConcreteFactory1;
+const concreteFactory2 =  new ConcreteFactory2;
+const firstClient = new Client(concreteFactory1);
+const secondClient = new Client(concreteFactory2);
 
-let concreteProductB2: IProductB = {
-    tableName: 'tableNameB2',
-    quantity: 20,
-};
-
-class ConcreteFactory1 implements IAbstractFactory {
-
-    private concreteProductA: IProductA;
-
-    private concreteProductB: IProductB;
-
-    constructor() {
-
-        this.concreteProductA = {
-            name: 'concreteProductA1',
-            quality: 'perfect',
-            cost: '9.99$',
-        };
-
-        this.concreteProductB = {
-            tableName: 'tableNameB1',
-            quantity: 10,
-        }
-    }
-
-    createProductA(): IProductA {
-        return this.concreteProductA;
-    }
-    createProductB(): IProductB {
-        return this.concreteProductB;
-    }
-
-}
-
-class ConcreteFactory2 implements IAbstractFactory {
-
-    private 
-}
-
-
+console.log(firstClient.factory.createProductA());
+console.log(firstClient.factory.createProductB());
+console.log(secondClient.factory.createProductA());
+console.log(secondClient.factory.createProductB());
+ 
