@@ -7,3 +7,8 @@ const director = new Director(firstBuilder);
 director.make('hello');
 let product = firstBuilder.getResult();
 console.log(product);
+director.changeBuilder(secondBuilder);
+director.make("world") 
+console.log(secondBuilder.getResult());
+secondBuilder.reset();
+console.log(secondBuilder.getResult());

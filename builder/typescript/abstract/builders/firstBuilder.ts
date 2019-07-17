@@ -1,36 +1,38 @@
-import { IBuilder, IProduct } from "../interfaces/";
+import { IBuilder } from "../interfaces/";
 
+import { Product } from '../product/product';
 /*
     Another way is create unique seter for every property
 */
 
 export class FirstBuilder implements IBuilder {
 
-    result: IProduct;
+    result: Product;
 
     constructor() {
+        this.result = new Product();
     }
 
     reset(): void {
-        // Object.keys(this.result).forEach( key => this.result[key] = undefined);
-        this.result.fieldA = '';
-        this.result.fieldB = '';
-        this.result.fieldC = '';
+        this.result = new Product();
     }
 
-    buildStepA(): void {
-        this.result.fieldA = 'A exists';
+    buildStepA(): this {
+        this.result.setFieldA("First Builder field A!");
+        return this;
     }
 
-    buildStepB(): void {
-        this.result.fieldB = 'B exists';
+    buildStepB(): this {
+        this.result.setFieldB("First Builder field B!");
+        return this;
     }
 
-    buildStepC(): void {
-        this.result.fieldC = 'C exists';
+    buildStepC(): this {
+        this.result.setFieldC("First Builder field C!");
+        return this;
     }
 
-    getResult(): IProduct {
+    getResult(): Product {
         return this.result;
     }
 
